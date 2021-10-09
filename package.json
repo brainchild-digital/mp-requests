@@ -1,0 +1,11 @@
+{
+  "name": "@codesmiths/mp-requests",
+  "version": "1.0.6",
+  "description": "Codesmiths Shanghai helper functions for WeChat Mini Program requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frank Zhu",
+  "license": "ISC"
+}
