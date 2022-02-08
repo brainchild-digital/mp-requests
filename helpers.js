@@ -11,7 +11,19 @@ function getHeader() {
   return wx.getStorageSync('header') || {};
 }
 
+function getRoot() {
+  const { server } = getApp().globalData;
+  return `${server.root[server.env]}/`;
+}
+
+function getApiRoot() {
+  const { server } = getApp().globalData;
+  return `${[server.root[server.env], server.api].join('/')}/`;
+}
+
 module.exports = {
   getHost,
   getHeader,
+  getRoot,
+  getApiRoot,
 };

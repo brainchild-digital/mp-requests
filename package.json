@@ -1,11 +1,15 @@
 {
   "name": "@codesmiths/mp-requests",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Codesmiths Shanghai helper functions for WeChat Mini Program requests",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Frank Zhu",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codesmithschina/mp-requests.git"
+  }
 }
