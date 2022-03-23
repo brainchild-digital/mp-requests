@@ -1,5 +1,11 @@
-function getHost() {
+function getHost(structure) {
   const { server } = getApp().globalData;
+
+  if (structure) {
+    const path = [server.root[server.env], ...structure.map((x) => (server[x]))].join('/');
+    return `${path}/`;
+  }
+
   if (server.structure) {
     const path = [server.root[server.env], ...server.structure.map((x) => (server[x]))].join('/');
     return `${path}/`;
