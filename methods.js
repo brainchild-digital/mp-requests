@@ -1,9 +1,11 @@
 import { getHost, getHeader } from './helpers';
 
 function request({ path, method = 'GET', data = {} }) {
+  const url = /http/.test(path) ? path : getHost() + path;
+
   return new Promise((resolve, reject) => {
     wx.request({
-      url: getHost() + path,
+      url,
       method,
       data,
       header: getHeader(),
