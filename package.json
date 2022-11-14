@@ -1,6 +1,6 @@
 {
   "name": "@codesmiths/mp-requests",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Codesmiths Shanghai helper functions for WeChat Mini Program requests",
   "main": "index.js",
   "scripts": {
