@@ -55,7 +55,9 @@ function uploadFiles(path, data) {
   // multiple files upload only supports updating of a record. Doesn't support creation of record.
 
   const that = this;
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
+    if (!data.files || !data.files.length) return reject(new Error('data.files is empty'));
+
     const upload = (files, successUp, failUp, count, length) => {
       // wx.showLoading({ title: `uploading ${count}` });
       wx.uploadFile({
@@ -100,6 +102,37 @@ function uploadFiles(path, data) {
   // });
 }
 
+function objectToQueryString(obj) {
+  let path = '';
+  let str = [];
+  for (var p in obj) {
+    if (obj.hasOwnProperty(p)) {
+      if (Array.isArray(obj[p])) {
+        // Handle array values
+        obj[p].forEach((val, i) => {
+          str.push(`${encodeURIComponent(p)}[]=${encodeURIComponent(val)}`);
+          // str.push(`${encodeURIComponent(p)}[${i}]=${encodeURIComponent(val)}`);
+        });
+      } else if (typeof obj[p] === 'object') {
+        // Handle nested objects
+        for (const k in obj[p]) {
+          if (obj[p].hasOwnProperty(k)) {
+            str.push(`${encodeURIComponent(p)}[${encodeURIComponent(k)}]=${encodeURIComponent(obj[p][k])}`);
+          }
+        }
+      } else {
+        // Handle simple values
+        str.push(`${encodeURIComponent(p)}=${encodeURIComponent(obj[p])}`);
+      }
+    }
+  }
+
+  if (str.length) path += '?';
+  path += str.join('&');
+
+  return path;
+}
+
 function setGetParams(data) {
   const params = [];
   let path = '';
@@ -111,7 +144,7 @@ function setGetParams(data) {
 
 function get(path, data = {}) {
   let url = path;
-  if (Object.keys(data).length) url += setGetParams(data);
+  if (Object.keys(data).length) url += objectToQueryString(data);
   return request({ path: url });
 }
 
