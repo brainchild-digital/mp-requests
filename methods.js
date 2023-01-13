@@ -149,5 +149,5 @@ function get(path, data = {}) {
 }
 
 module.exports = {
-  request, post, del, get, put, uploadFile, uploadFiles,
+  request, post, del, get, put, uploadFile, uploadFiles, objectToQueryString,
 };
