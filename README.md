@@ -1,4 +1,4 @@
-# CODESMITHS SHANGHAI WECHAT MINI PROGRAM REQUESTS HELPERS - USER GUIDE
+# Brainchild Digital Shanghai WeChat Mini Program Requests Helpers - User Guide
 
 ## Helper Functions
 

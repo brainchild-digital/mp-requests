@@ -4,13 +4,13 @@ function getUrl(path) {
   return /http/.test(path) ? path : getHost() + path;
 }
 
-function request({ path, method = 'GET', data = {} }) {
+function request({ path, method = 'GET', data = {}, header = getHeader() }) {
   return new Promise((resolve, reject) => {
     wx.request({
       url: getUrl(path),
       method,
       data,
-      header: getHeader(),
+      header,
       success: resolve,
       fail: reject,
     });
