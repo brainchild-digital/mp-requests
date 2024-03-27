@@ -142,12 +142,15 @@ function setGetParams(data) {
   return path;
 }
 
-function get(path, data = {}) {
+function get(path, data = {}, header) {
   let url = path;
   if (Object.keys(data).length) url += objectToQueryString(data);
-  return request({ path: url });
+  const options = { path: url };
+  if (header) options.header = header;
+
+  return request(options);
 }
 
 module.exports = {
-  request, post, del, get, put, uploadFile, uploadFiles, objectToQueryString,
+  request, post, del, get, put, uploadFile, uploadFiles, objectToQueryString, getUrl,
 };
