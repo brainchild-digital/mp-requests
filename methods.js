@@ -17,16 +17,22 @@ function request({ path, method = 'GET', data = {}, header = getHeader() }) {
   });
 }
 
-function post(path, data = {}) {
-  return request({ path, data, method: 'POST' });
+function post(path, data = {}, header) {
+  const options = { path, data, method: 'POST' };
+  if (header) options.header = header;
+  return request(options);
 }
 
-function put(path, data = {}) {
-  return request({ path, data, method: 'PUT' });
+function put(path, data = {}, header) {
+  const options = { path, data, method: 'PUT' };
+  if (header) options.header = header;
+  return request(options);
 }
 
-function del(path, data = {}) {
-  return request({ path, data, method: 'DELETE' });
+function del(path, data = {}, header) {
+  const options = { path, data, method: 'DELETE' };
+  if (header) options.header = header;
+  return request(options);
 }
 
 function uploadFile(path, fileData = {}, formData = {}) {
@@ -91,15 +97,6 @@ function uploadFiles(path, data) {
 
     upload(data.files, successUp, failUp, count, length);
   });
-
-  // wx.uploadFile({
-  //   url: getUrl(path), header, filePath, name, formData,
-  //   success(res) {
-  //     if (res.statusCode === 200) res.data = JSON.parse(res.data);
-  //     resolve(res);
-  //   },
-  //   fail: reject,
-  // });
 }
 
 function objectToQueryString(obj) {
